@@ -10,6 +10,7 @@
   "dependencies": {
     "@marvr/storyblok-rich-text-vue-renderer": "^2.0.1",
     "@vue/composition-api": "^1.2.4",
+    "axios": "^0.22.0",
     "core-js": "^3.6.5",
     "storyblok-js-client": "^4.1.5",
     "vue": "^2.6.11",

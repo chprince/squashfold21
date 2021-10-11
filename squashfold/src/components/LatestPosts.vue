@@ -1,7 +1,9 @@
 <template>
-  <div v-editable="blok" class="about" v-bind:style="{ 'background-color': '#' + getThemeSettings.palette.bg2.hex }">
-      <h2>Latest posts</h2>
-      <PostGrid v-bind:pages="3" />
+  <div v-editable="blok" class="latestPosts" v-bind:style="{ 'background-color': '#' + getThemeSettings.palette.bg2.hex }">
+      <div class="layout-container">
+        <h2>Latest posts</h2>
+        <PostGrid v-bind:pages="3" />
+      </div>
   </div>
 </template>
 

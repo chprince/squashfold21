@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about layout-container">
     <h1>This is a blog page</h1>
     <PostGrid v-bind:pages="12" />
   </div>

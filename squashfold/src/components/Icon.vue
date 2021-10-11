@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="icon-row">
+  <div v-editable="blok" class="icon">
       <img :src="blok.image.filename" alt="blok.image.alt"/>
   </div>
 </template>
@@ -16,18 +16,23 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+@import "@/scss/_layout.scss";
+
+.icon {
+  text-align: center;
+  
+    img {
+      width: 100%;
+      max-width: 60px;
+      height: auto;
+
+      @include from('medium') {
+        max-width: 80px;
+      }
+
+      @include from('medium') {
+        max-width: 100px;
+      }
+    }
 }
 </style>

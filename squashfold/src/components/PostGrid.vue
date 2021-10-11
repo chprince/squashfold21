@@ -1,10 +1,10 @@
 <template>
-  <section class="posts-grid layout-container">
+  <section class="posts-grid">
     <div class="posts-grid__inner">
         <article class="posts-grid__item" v-for="post in this.posts" :key="post.id">
           <router-link  :to="{ path: '/Post/'+ post.slug }">
             <span>{{ dateBuilder(post.published_at) }}</span>
-            <span>{{post.tag_list[0]}}</span>
+            <span class="post-tag">{{post.tag_list[0]}}</span>
             <h3>{{post.name}}</h3>
             <p>{{post.content.excerpt}}</p>
             <!-- <rich-text-renderer v-if="post.content.long_text" :document="post.content.long_text" /> -->
@@ -84,6 +84,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "@/scss/_variables.scss";
+@import "@/scss/_layout.scss";
+
 .posts-grid {
   &__inner {
     display: flex;
@@ -92,15 +95,29 @@ export default {
 
   &__item {
     a {
-      display: grid;
-      grid-template-columns: 1fr 1fr 2fr 2fr;
-      grid-gap: 20px;
-      align-items: center;
+      display: block;
       color: #000;
       text-decoration: none;
       border-bottom: 2px dashed #000;
-      padding: 20px 0;
+      padding: $indent__base 0;
       text-align: left;
+
+      .post-tag {
+        &::before {
+          content: ' - ';
+        }
+      }
+
+      @include from('medium') {
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr 2fr;
+        grid-gap: $indent__base;
+        align-items: center;
+
+        .post-tag::before {
+          content: none;
+        }
+      }
     }
 
     &:first-child {

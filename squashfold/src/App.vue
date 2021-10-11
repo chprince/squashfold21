@@ -13,18 +13,26 @@
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "@/scss/_variables.scss";
+@import "@/scss/_typography.scss";
+@import "@/scss/_layout.scss";
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: $default-font-size;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 30px;
+  padding: $indent__l;
+  background-color: $bg1;
 
   a {
     font-weight: bold;
@@ -39,6 +47,10 @@
 .layout-container {
   max-width: 1366px;
   margin: 0 auto;
-  padding: 20px;
+  padding: $indent__xl $indent__base;
+
+  @include from('medium') {
+    padding: $indent__xxl $indent__l;
+  }
 }
 </style>

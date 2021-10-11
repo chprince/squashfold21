@@ -1,6 +1,5 @@
 <template>
-  <div v-editable="blok" class="icon">
-    <h2>Icon Row</h2>
+  <div v-editable="blok" class="icon-row layout-container">
     <div v-for="Icon in blok.Icon" v-bind:key="Icon.id">
         <component :blok="Icon" :is="Icon.component"></component>
     </div>
@@ -19,18 +18,32 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+@import "@/scss/_variables.scss";
+@import "@/scss/_layout.scss";
+
+.icon-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: $indent__xxl;
+  // padding-bottom: $indent__xxl;
+  flex-flow: row wrap;
+
+  > * {
+    padding: 0 $indent__base $indent__l;
+    width: 60px;
+    flex-grow: 1;
+
+    @include from('medium') {
+      padding: 0 $indent__l $indent__xl;
+      width: 80px;
+      flex: 1;
+    }
+
+    @include from('large') {
+      padding: 0 $indent__l $indent__xl;
+      width: 100px;
+    }
+  }
 }
 </style>
