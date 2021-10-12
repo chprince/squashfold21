@@ -51,6 +51,11 @@ strong {
     font-size: $font-size__s;
 }
 
+code {
+    overflow: auto;
+    width: 100%;
+}
+
 .toolbar {
     margin-top: $indent__base;
 
