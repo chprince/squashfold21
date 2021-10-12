@@ -27,6 +27,10 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
 
+  h2 {
+    font-size: $font-size__l;
+  }
+
   @include from('small') {
     grid-template-columns: 1fr 1fr;
     grid-gap: $indent__base;

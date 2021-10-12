@@ -4,7 +4,7 @@
     <img :src="this.story.content.image" :alt="this.story.content.title"/>
     <div>
       <div class="post-meta">
-        <strong>{{ dateBuilder(this.story.published_at) }}</strong> | 
+        <strong>{{ dateBuilder(this.story.first_published_at) }}</strong> | 
         <span v-for="tag in this.story.tag_list" :key="tag">{{tag}}</span>
       </div>
         <h1>{{this.story.content.title}}</h1>
@@ -14,6 +14,7 @@
     <!-- {{ this.story.content }} -->
     <div class="post__content">
       <rich-text-renderer :document="this.story.content.long_text" />
+      <p class="small">Last edited {{ dateBuilder(this.story.published_at) }}</p>
     </div>
   </div>
 </template>
@@ -106,7 +107,7 @@ export default {
 
 .post {
   padding-top: $indent__xl;
-  
+
   &__top {
     display: grid;
     grid-template-columns: 1fr;

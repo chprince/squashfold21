@@ -43,8 +43,12 @@ strong {
     font-weight: bold;
 }
 
-large {
+.large {
     font-size: $font-size__l;
+}
+
+.small {
+    font-size: $font-size__s;
 }
 
 .toolbar {
