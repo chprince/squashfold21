@@ -21,13 +21,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "@/scss/_layout.scss";
+@import "@/scss/_variables.scss";
 
 .about {
   display: grid;
   grid-template-columns: 1fr;
 
   @include from('medium') {
-    grid-template-columns: 6fr 5fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $indent__base;
     align-items: center;
   }
 }

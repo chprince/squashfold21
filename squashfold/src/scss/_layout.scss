@@ -40,3 +40,15 @@ $breakpoints: (
             + "Available breakpoints are: #{map-keys($breakpoints)}.";
     }
 }
+
+.mobile-only {
+    @include from('medium') {
+        display: none;
+    }
+}
+
+.desktop-only {
+    @include to('medium') {
+        display: none;
+    }
+}

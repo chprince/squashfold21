@@ -33,6 +33,10 @@ Vue.use(VueRichTextRenderer);
 
 Vue.config.productionTip = false;
 
+//SVG
+import InlineSvg from 'vue-inline-svg';
+Vue.component('inline-svg', InlineSvg);
+
 new Vue({
   router,
   store,

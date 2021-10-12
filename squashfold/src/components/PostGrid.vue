@@ -3,9 +3,9 @@
     <div class="posts-grid__inner">
         <article class="posts-grid__item" v-for="post in this.posts" :key="post.id">
           <router-link  :to="{ path: '/Post/'+ post.slug }">
-            <span>{{ dateBuilder(post.published_at) }}</span>
+            <strong>{{ dateBuilder(post.published_at) }}</strong>
             <span class="post-tag">{{post.tag_list[0]}}</span>
-            <h3>{{post.name}}</h3>
+            <h3 class="post-title">{{post.name}}</h3>
             <p>{{post.content.excerpt}}</p>
             <!-- <rich-text-renderer v-if="post.content.long_text" :document="post.content.long_text" /> -->
             <!-- {{post}} -->
@@ -126,5 +126,9 @@ export default {
         }
       }
   }
+
+  // .post-title {
+  //   font-size: $font-size__xl;
+  // }
 }
 </style>

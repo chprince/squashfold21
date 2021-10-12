@@ -1,6 +1,6 @@
 <template>
   <div class="hero" v-bind:style="{ 'background-color': '#' + getThemeSettings.palette.bg1.hex }">
-    <div v-editable="blok" class="hero__inner layout-container">
+    <div v-editable="blok" class="hero__inner layout-container layout-container--cut">
       <p class="quote-text">
         {{blok.quote}}
       </p>
@@ -8,19 +8,18 @@
         - {{blok.quoteAuthor}}
       </span>
     </div>
-    {{ this.bottomBorder }}
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import bottomBorder from "../assets/bottom.svg";
+// import InlineSvg from 'vue-inline-svg';
 
 export default {
   name: "Hero",
   data: function () {
     return {
-      bottomBorder: bottomBorder,
+      // bottomBorder: bottomBorder,
     }
   },
   props: {
@@ -29,6 +28,9 @@ export default {
   computed: {
     ...mapGetters(["getThemeSettings"]),
   },
+  components: {
+    // InlineSvg,
+  }
 };
 </script>
 
@@ -36,6 +38,56 @@ export default {
 <style scoped lang="scss">
 @import "@/scss/_variables.scss";
 @import "@/scss/_layout.scss";
+
+.hero {
+  position: relative; 
+
+  @include from('medium') {
+    &::before {
+        content: '';
+        top: 0;
+        right: 10px;
+        background-image: url(../assets/hero-2.png);
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    &::after {
+        content: '';
+        bottom: 0;
+        left: 10px;
+        background-image: url(../assets/hero-1.png);
+        height: 300px;
+        width: 300px;
+        position: absolute;
+        background-position: bottom left;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+  }
+
+  @include from('large') {
+    &::before {
+      width: 200px;
+      height: 400px;
+    }
+
+    &::after {
+      width: 400px;
+      height: 400px;
+    }
+  }
+
+  &__inner {
+    &::after {
+      content: none;
+    }
+  }
+}
 
 .quote-text {
   display: block;

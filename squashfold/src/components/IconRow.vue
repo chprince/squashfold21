@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="icon-row layout-container">
+  <div v-editable="blok" class="icon-row">
     <div v-for="Icon in blok.Icon" v-bind:key="Icon.id">
         <component :blok="Icon" :is="Icon.component"></component>
     </div>
@@ -25,9 +25,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: $indent__xxl;
+  padding: $indent__xxl $indent__base $indent__base;
   // padding-bottom: $indent__xxl;
   flex-flow: row wrap;
+
+  @include from('medium') {
+    padding: $indent__xxl $indent__l $indent__l;
+  }
 
   > * {
     padding: 0 $indent__base $indent__l;
