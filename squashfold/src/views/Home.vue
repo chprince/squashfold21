@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <component :blok="story.content" :is="story.content.component"></component>
+      <component :blok="story.content" :is="story.content.component"></component>
   </div>
 </template>
 

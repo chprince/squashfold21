@@ -34,7 +34,8 @@ export default {
   },
   props: {
     slug: String,
-    pages: Number
+    pages: Number,
+    searchTerm: String,
   },
   computed: {
     ...mapGetters(["getPosts"]),
@@ -45,11 +46,22 @@ export default {
     })
     this.getListPosts();
   },
+  watch: {
+    pages: function(newVal, oldVal) { // watch it
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal);
+      this.getListPosts();
+    },
+    searchTerm: function(newVal, oldVal) {
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal);
+      this.getListPosts();
+    }
+  },
   methods: {
     getListPosts() {
       storyapi.get('cdn/stories', {
         "starts_with": "blog/",
-        "per_page": this.pages
+        "per_page": this.pages,
+        "search_term": this.searchTerm,
       })
       .then(response => {
         this.posts = response.data.stories
@@ -99,7 +111,7 @@ export default {
       color: #000;
       text-decoration: none;
       border-bottom: 2px dashed #000;
-      padding: $indent__base 0;
+      padding: $indent__l 0;
       text-align: left;
 
       .post-tag {

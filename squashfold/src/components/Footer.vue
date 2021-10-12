@@ -2,7 +2,8 @@
   <div class="footer" v-bind:style="{ 'background-color': '#' + getThemeSettings.palette.bg1.hex }">
     <div class="footer__inner layout-container layout-container--cut">
         <h2>Want to get in touch?</h2>
-        <p>Message me on <a href="/">LinkedIn</a> or <a href="/">Twitter</a></p>
+        <p>Message me on <a target="_blank" href="https://www.linkedin.com/in/charlie-prince-612a64151">LinkedIn</a>
+         or <a target="_blank" href="https://twitter.com/charliehprince">Twitter</a></p>
     </div>
   </div>
 </template>

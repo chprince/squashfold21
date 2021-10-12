@@ -1,8 +1,20 @@
 <template>
-  <div class="post">
-    <h1>{{this.story.content.title}}</h1>
+  <div class="post layout-container">
+    <div class="post__top">
+    <img :src="this.story.content.image" :alt="this.story.content.title"/>
+    <div>
+      <div class="post-meta">
+        <strong>{{ dateBuilder(this.story.published_at) }}</strong> | 
+        <span v-for="tag in this.story.tag_list" :key="tag">{{tag}}</span>
+      </div>
+        <h1>{{this.story.content.title}}</h1>
+        <p class="intro">{{this.story.content.intro}}</p>
+      </div>
+    </div>
     <!-- {{ this.story.content }} -->
-    <rich-text-renderer :document="this.story.content.long_text" />
+    <div class="post__content">
+      <rich-text-renderer :document="this.story.content.long_text" />
+    </div>
   </div>
 </template>
 
@@ -62,7 +74,56 @@ export default {
       .catch((error) => {
         console.log(error);
       })
-    }
+    },
+    dateBuilder() {
+      let d = new Date();
+      let months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      let date = d.getDate();
+      let month = months[d.getMonth()];
+      let year = d.getFullYear();
+      return `${date} ${month} ${year}`;
+    },
   },
 };
 </script>
+
+<style scoped lang="scss">
+@import "@/scss/_layout.scss";
+@import "@/scss/_variables.scss";
+
+.post {
+  padding-top: $indent__xl;
+
+  .intro {
+    font-size: $font-size__l;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $indent__l;
+    align-items: center;
+    border-bottom: 2px dashed #000;
+    padding-bottom: $indent__l;
+    margin-bottom: $indent__l;
+  }
+
+  &__content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+</style>

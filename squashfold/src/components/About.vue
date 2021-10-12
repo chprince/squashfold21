@@ -27,7 +27,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
 
-  @include from('medium') {
+  @include from('small') {
     grid-template-columns: 1fr 1fr;
     grid-gap: $indent__base;
     align-items: center;

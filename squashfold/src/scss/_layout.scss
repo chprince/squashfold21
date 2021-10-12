@@ -1,7 +1,9 @@
 $breakpoints: (
+    'xsmall': 400px,
     'small':  767px,
     'medium': 992px,
-    'large':  1200px
+    'large':  1200px,
+    'xlarge': 1860px
 ) !default;
 
 /// Mixin to manage responsive breakpoints
@@ -51,4 +53,13 @@ $breakpoints: (
     @include to('medium') {
         display: none;
     }
+}
+
+.visually-hidden {
+    position: absolute;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    visibility: hidden;
+    left: -100vw;
 }

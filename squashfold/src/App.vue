@@ -1,13 +1,16 @@
 <template>
   <div id="app">
     <nav class="nav" id="nav">
-      <router-link class="home-link" to="/"><strong>Squash</strong>Fold</router-link>
-      <div>
-        <router-link to="/Blog">Blog</router-link> |
-        <router-link to="/">Contact</router-link>
+      <div class="nav__inner layout-container layout-container--cut">
+        <router-link class="home-link" to="/"><strong>Squash</strong>Fold</router-link>
+        <div>
+          <router-link to="/Blog">Blog</router-link>
+        </div>
       </div>
     </nav>
-    <router-view />
+    <!-- <transition name="slide-fade"> -->
+      <router-view />
+    <!-- </transition> -->
     <Footer />
   </div>
 </template>
@@ -31,6 +34,25 @@ export default ({
 @import "@/scss/_typography.scss";
 @import "@/scss/_layout.scss";
 
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(100vw);
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -44,17 +66,42 @@ img {
 }
 
 .nav {
-  display: flex;
-  justify-content: space-between;
-  padding: $indent__l;
   background-color: $bg1;
+
+  &__inner {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $indent__l !important;
+  }
+
+//   &::before {
+//     content: '';
+//     top: calc(100% - 1px);
+//     left: 0;
+//     right: 0;
+//     background-image: url(./assets/bottom1.png);
+//     height: 50px;
+//     position: absolute;
+//     background-position: top center;
+//     background-repeat: no-repeat;
+//     background-size: 100% auto;
+// }
 
   a {
     text-decoration: none;
     color: $text-dark;
+    opacity: 1;
+    transition: all ease-in-out .2s;
 
     &.router-link-exact-active:not(.home-link) {
-      // color: $accent;
+      opacity: 0;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
     }
   }
 

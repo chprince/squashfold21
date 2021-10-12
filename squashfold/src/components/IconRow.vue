@@ -41,12 +41,15 @@ export default {
     @include from('medium') {
       padding: 0 $indent__l $indent__xl;
       width: 80px;
-      flex: 1;
     }
 
     @include from('large') {
       padding: 0 $indent__l $indent__xl;
       width: 100px;
+    }
+
+    @include from('xlarge') {
+      flex: 1;
     }
   }
 }

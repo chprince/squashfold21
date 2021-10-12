@@ -5,7 +5,7 @@
           <h2>Latest posts</h2>
           <router-link class="btn desktop-only" to="/Blog">View all</router-link>  
         </div>
-        <PostGrid v-bind:pages="3" />
+        <PostGrid v-bind:pages="this.pages" />
         <div class="toolbar toolbar--center mobile-only">
           <router-link class="btn" to="/Blog">View all</router-link>  
         </div>
@@ -21,6 +21,11 @@ export default {
   name: "LatestPosts",
   components: {
     PostGrid,
+  },
+  data: function () {
+    return {
+      pages: 3,
+    }
   },
   props: {
     blok: Object
@@ -40,7 +45,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: $indent__base;
+    padding-bottom: $indent__l;
 
     h2 {
       margin: 0;
