@@ -4,11 +4,11 @@
  * @type {import('@vue/cli-service').ProjectOptions}
  */
 
- module.exports = {
-    publicPath: process.env.NODE_ENV === 'production'
-      ? '/squashfold21/' // note the trailing slash
-      : '/',
-  };
+//  module.exports = {
+//     publicPath: process.env.NODE_ENV === 'production'
+//       ? '/squashfold21/' // note the trailing slash
+//       : '/',
+//   };
 
 // module.exports = {
 //     css: {
