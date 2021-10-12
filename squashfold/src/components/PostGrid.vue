@@ -2,7 +2,7 @@
   <section class="posts-grid">
     <div class="posts-grid__inner">
         <article class="posts-grid__item" v-for="post in this.posts" :key="post.id">
-          <router-link  :to="{ path: '/Post/'+ post.slug }">
+          <router-link class="post-link" :to="{ path: '/Post/'+ post.slug }">
             <strong>{{ dateBuilder(post.published_at) }}</strong>
             <span class="post-tag">{{post.tag_list[0]}}</span>
             <h3 class="post-title">{{post.name}}</h3>
@@ -106,13 +106,18 @@ export default {
   }
 
   &__item {
-    a {
+    .post-link {
       display: block;
       color: #000;
       text-decoration: none;
       border-bottom: 2px dashed #000;
       padding: $indent__l 0;
       text-align: left;
+
+      &:hover,
+      &:focus {
+        color: $accent;
+      }
 
       .post-tag {
         &::before {

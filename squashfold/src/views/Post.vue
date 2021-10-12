@@ -113,12 +113,16 @@ export default {
 
   &__top {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: $indent__l;
     align-items: center;
     border-bottom: 2px dashed #000;
     padding-bottom: $indent__l;
     margin-bottom: $indent__l;
+
+    @include from('medium') {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   &__content {
