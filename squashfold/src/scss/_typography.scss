@@ -17,7 +17,7 @@ h6 {
 }
 
 h1 {
-    font-size: $font-size__xxl;
+    font-size: $font-size__xl;
 }
 
 h2 {
@@ -41,6 +41,10 @@ p {
 
 strong {
     font-weight: bold;
+}
+
+large {
+    font-size: $font-size__l;
 }
 
 .toolbar {

@@ -106,11 +106,7 @@ export default {
 
 .post {
   padding-top: $indent__xl;
-
-  .intro {
-    font-size: $font-size__l;
-  }
-
+  
   &__top {
     display: grid;
     grid-template-columns: 1fr;
