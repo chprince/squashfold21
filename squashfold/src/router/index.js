@@ -31,6 +31,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "blog" */ "../views/Home.vue"),
   },
+  { path: '/blog/:id', redirect: '/Post/:id' }
 ];
 
 const router = new VueRouter({
