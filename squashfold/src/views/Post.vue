@@ -13,7 +13,7 @@
     </div>
     <!-- {{ this.story.content }} -->
     <div class="post__content">
-      <rich-text-renderer :document="this.story.content.long_text" />
+      <rich-text-renderer :document="this.story.content.long_text"/>
       <p class="small">Last edited {{ dateBuilder(this.story.published_at) }}</p>
     </div>
   </div>

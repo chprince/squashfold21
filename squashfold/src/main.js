@@ -14,6 +14,7 @@ import Teaser from '@/components/Teaser';
 import Icon from '@/components/Icon';
 import IconRow from '@/components/IconRow';
 import LatestPosts from '@/components/LatestPosts';
+import HighlightedCode from '@/components/HighlightedCode';
 
 Vue.component('page', Page);
 
@@ -22,14 +23,24 @@ Vue.component('hero', Hero);
 Vue.component('about', About);
 Vue.component('icon', Icon);
 Vue.component('icon-row', IconRow);
-Vue.component('latest-posts', LatestPosts);
+Vue.component('latestPosts', LatestPosts);
+Vue.component('highlightedCode', HighlightedCode);
 
  // Register Composition API
 Vue.use(VueCompositionApi);
 
 Vue.use(StoryblokVue)
 Vue.use(VueCompositionApi);
-Vue.use(VueRichTextRenderer);
+// Vue.use(VueRichTextRenderer);
+Vue.use(VueRichTextRenderer, {
+  resolvers: {
+    components: {
+      latestPosts: LatestPosts,
+      highlightedCode: HighlightedCode,
+      about: About
+    },
+  }
+});
 
 Vue.config.productionTip = false;
 

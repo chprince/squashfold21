@@ -2,7 +2,7 @@
   <div v-editable="blok" class="about layout-container">
     <img :src="blok.image.filename" alt="blok.image.alt"/>
     <div class="content">
-      <h1>{{ blok.heading }}</h1>
+      <h1>about{{ blok.heading }}</h1>
       <rich-text-renderer :document="blok.content" />
     </div>
   </div>
