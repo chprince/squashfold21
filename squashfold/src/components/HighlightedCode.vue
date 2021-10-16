@@ -1,7 +1,8 @@
 <template>
   <div v-editable="blok" class="code">
       <h1>This is a code block</h1>
-      <code>{{blok}}</code>
+      <code v-if="body">{{body}}</code>
+      <code v-if="blok">{{blok}}</code>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 export default {
   name: "HighlightedCode",
   props: {
+    body: Object,
     blok: Object
   },
 };
