@@ -1,6 +1,5 @@
 <template>
   <div v-editable="blok" class="code">
-      <h1>This is a code block</h1>
       <ssh-pre :language="body.Language" dark="true" :label="body.Label ? body.Label : body.Language" v-if="body">{{body.Code}}</ssh-pre>
       <ssh-pre v-if="blok">{{blok}}</ssh-pre>
   </div>
