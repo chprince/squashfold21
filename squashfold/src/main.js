@@ -15,6 +15,7 @@ import Icon from '@/components/Icon';
 import IconRow from '@/components/IconRow';
 import LatestPosts from '@/components/LatestPosts';
 import HighlightedCode from '@/components/HighlightedCode';
+import VuePrlx from 'vue-prlx';
 
 Vue.component('page', Page);
 
@@ -25,6 +26,8 @@ Vue.component('icon', Icon);
 Vue.component('icon-row', IconRow);
 Vue.component('latestPosts', LatestPosts);
 Vue.component('highlightedCode', HighlightedCode);
+
+Vue.use(VuePrlx);
 
  // Register Composition API
 Vue.use(VueCompositionApi);

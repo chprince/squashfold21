@@ -1,5 +1,7 @@
 <template>
   <div class="hero" v-bind:style="{ 'background-color': '#' + getThemeSettings.palette.bg1.hex }">
+    <div class="bg-icon" v-prlx="{ reverse: false }"></div>
+    <div class="bg-icon-2" v-prlx="{ reverse: true }"></div>
     <div v-editable="blok" class="hero__inner layout-container layout-container--cut">
       <p class="quote-text">
         {{blok.quote}}
@@ -12,6 +14,7 @@
 </template>
 
 <script>
+//  v-prlx="{ reverse: true }"
 import { mapGetters } from "vuex";
 // import InlineSvg from 'vue-inline-svg';
 
@@ -41,10 +44,14 @@ export default {
 
 .hero {
   position: relative; 
+  .bg-icon,
+  .bg-icon-2 {
+    display: none;
+  }
 
   @include from('medium') {
-    &::before {
-        content: '';
+    .bg-icon {
+        display: block;
         top: 0;
         right: 10px;
         background-image: url(../assets/hero-2.png);
@@ -56,8 +63,8 @@ export default {
         background-size: contain;
     }
 
-    &::after {
-        content: '';
+    .bg-icon-2 {
+        display: block;
         bottom: 0;
         left: 10px;
         background-image: url(../assets/hero-1.png);

@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="latestPosts" v-bind:style="{ 'background-color': '#' + getThemeSettings.palette.bg2.hex }">
+  <div v-prlx="{ reverse: true }" v-editable="blok" class="latestPosts" v-bind:style="{ 'background-color': '#' + getThemeSettings.palette.bg2.hex }">
       <div class="layout-container layout-container--cut-alt layout-container--cut">
         <div class="latestPosts__top">
           <h2>Latest posts</h2>

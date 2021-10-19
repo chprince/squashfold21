@@ -12,6 +12,11 @@
 
 export default {
   name: "About",
+  data: function () {
+    return {
+      maxPrlx: '60'
+    }  
+  },
   props: {
     blok: Object
   },
