@@ -1,18 +1,21 @@
 <template>
   <div class="post layout-container">
-    <div class="post__top">
-    <img :src="this.story.content.image" :alt="this.story.content.title"/>
-    <div>
-      <div class="post-meta">
-        <strong>{{ dateBuilder(this.story.first_published_at) }}</strong> | 
-        <span v-for="tag in this.story.tag_list" :key="tag">{{tag}}</span>
-      </div>
+    <div v-if="this.loading === 'true'">
+      <h1>Loading</h1>
+    </div>
+    <div class="post__top" v-if="this.loading === 'false'">
+      <img :src="this.story.content.image" :alt="this.story.content.title"/>
+      <div>
+        <div class="post-meta">
+          <strong>{{ dateBuilder(this.story.first_published_at) }}</strong> | 
+          <span v-for="tag in this.story.tag_list" :key="tag">{{tag}}</span>
+        </div>
         <h1>{{this.story.content.title}}</h1>
         <p class="intro">{{this.story.content.intro}}</p>
       </div>
     </div>
     <!-- {{ this.story.content }} -->
-    <div class="post__content">
+    <div class="post__content" v-if="this.loading === 'false'">
       <rich-text-renderer :document="this.story.content.long_text"/>
       <p class="small">Last edited {{ dateBuilder(this.story.published_at) }}</p>
     </div>
@@ -33,7 +36,8 @@ export default {
   name: "PostSample",
   data: function () {
     return {
-      story: 'hello'
+      story: 'hello',
+      loading: 'true',
     }
   },
   props: {
@@ -60,6 +64,7 @@ export default {
         // published versions will be loaded outside of app.storyblok.com
         // so make sure to published your entries - otherwise this will be a 404
         this.getStory(this.$route.params.id, 'published')
+        
       }
     })
   },
@@ -70,7 +75,8 @@ export default {
         version: version
       })
       .then((response) => {
-        this.story = response.data.story
+        this.story = response.data.story;
+        this.loading = 'false';
       })
       .catch((error) => {
         console.log(error);
